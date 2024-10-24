@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div
+      class="w-full h-screen bg-gray-800 text-white p-5 flex flex-col items-center gap-6 relative"
+    >
+      <form
+        action="/create"
+        method="post"
+        class="w-full lg:w-[500px] border border-gray-600 flex flex-col items-start justify-center gap-4 p-4 rounded-md"
+      >
+        <h1 class="text-xl md:text-2xl lg:text-4xl font-bold">Create Task</h1>
+        <input
+          type="text"
+          name="title"
+          class="w-full h-[55px] rounded-sm border-none outline-none px-2 text-black font-semibold"
+          placeholder="Title goes here"
+        />
+
+        <textarea
+          name="details"
+          id="details"
+          class="w-full rounded-sm border-none outline-none px-2 text-black font-semibold resize-none"
+          rows="5"
+          placeholder="Details Goes here"
+        ></textarea>
+        <button
+          class="px-5 py-2 bg-blue-600 text-white rounded-sm font-semibold text-sm active:bg-blue-700"
+          type="submit"
+        >
+          Create Task
+        </button>
+      </form>
+      <div class="w-full p-10 text-black">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <% if(files.length > 0){ %> <% files.forEach((val)=>{%>
+          <div class="bg-gray-900 w-full p-4 rounded-md flex justify-between items-center">
+            <div>
+              <h1 class="text-xl text-white font-semibold"><%= val %></h1>
+              <a
+                href="/file/<%= val %>"
+                class="bg-none text-blue-500 cursor-pointer font-semibold mt-1 text-sm hover:text-blue-600"
+              >
+                Read More
+              </a>
+            </div>
+            <div class="flex flex-col items-end gap-2 justify-between">
+              <a
+                href="/files/<%= val %>"
+                class="bg-none text-red-500 cursor-pointer font-semibold mt-1 text-sm hover:text-red-600"
+              >
+                Delete
+              </a>
+              <a
+                href="/edit/<%= val %>"
+                class="bg-none text-yellow-500 cursor-pointer font-semibold mt-1 text-sm hover:text-yellow-600"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+          <% }) %> <% } else{ %>
+          <h3 class="text-xl text-white md:text-2xl lg:text-4xl font-bold">
+            No Task Yet :(
+          </h3>
+          <%}%>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
