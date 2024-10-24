@@ -126,7 +126,3 @@ The project uses the following dependencies:
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-This README should cover the essential details about your project, from installation to usage. Let me know if you'd like to add anything else!
